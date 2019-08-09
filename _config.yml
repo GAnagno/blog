@@ -24,7 +24,7 @@ github_username:  GAnagno
 
 defaults:
   - scope:
-      path: "assets/images"
+      path: "/assets/images"
     values:
       image: true
 # Build settings
