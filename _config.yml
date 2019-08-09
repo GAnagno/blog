@@ -22,11 +22,6 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: georg_anagno
 github_username:  GAnagno
 
-defaults:
-  - scope:
-      path: "/assets/images"
-    values:
-      image: true
 # Build settings
 markdown: kramdown
 theme: minima
