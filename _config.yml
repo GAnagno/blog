@@ -16,7 +16,7 @@
 title: EUCLIDorNOT
 email: mail@anagno.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Images, numbers, sound and text are euclidean. Graphs, networks, manifolds and trees are geometric.
+  Images, numbers, sound and text are euclidean. Graphs, networks and manifolds are geometric.
 baseurl: "myblog" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: georg_anagno
