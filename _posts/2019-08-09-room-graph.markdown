@@ -26,21 +26,38 @@ ax.set_title('BIMobject HQ', fontsize=16);
 The idea, which is frankly not new but also not common practice in the industry, is to represent rooms and doors as nodes and edges of a `network`. Room properties such as area and perimeter become `node_attributes` and door properties such as width and height become `edge_weights`.
 
 # Get structured data
+
 {% highlight python %}
 # Load rooms 
 rooms = pd.read_csv('data/room_schedule.csv', skiprows=[2], keep_default_na=False)
 rooms.columns = rooms.iloc[0]
 rooms.drop([0], inplace=True)
 rooms['Area'] = rooms['Area'].map(lambda x: x.rstrip(' m²'))
-rooms
 {% endhighlight %}
 
+| Number | Name               | Area  | Perimeter |
+| ------ | ------------------ | ----- | --------- |
+| 1      | CTO Office         | 9.52  |	12794     |
+| 2      | Legal Eagle Office | 9.51  |	12786     |
+| 3      | PA Office          | 9.51  |	12786     |
+| 4      | CEO Office         | 21.62 |	12587     |
+| 5      | HR Office          | 9.30  |	12565     |
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+{% highlight python %}
+# Load doors 
+doors = pd.read_csv('data/door_schedule.csv', skiprows=[2], keep_default_na=False)
+doors.columns = doors.iloc[0]
+doors.drop([0], inplace=True)
+doors.drop(doors.tail(1).index, inplace=True)
+{% endhighlight %}
 
+| Mark   | From Room          | To Room | Width | Height |
+| ------ | ------------------ | ------- | ----- | ------ |
+| 632296 | CTO Office         | Open    | 1015  | 2102   |
+| 642739 | Legal Eagle Office | Open    | 1015  | 2102   |
+| 650548 | PA Office          | Open    | 1015  | 2102   |
+| 196335 | CEO Office         | Open    | 1015  | 2102   |
+| 654502 | CFO Office         | Open    | 1015  | 2102   |
 
 Check out the [Jupyter notebook][notebook] for the full code.
 
