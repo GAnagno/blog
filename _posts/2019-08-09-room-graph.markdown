@@ -106,6 +106,8 @@ my_pos = nx.spring_layout(G, seed=56)
 nx.draw(G, pos=my_pos, with_labels=True, edge_color=c, width=1.5, node_size=4, edge_cmap=plt.cm.Paired)
 {% endhighlight %}
 
+![MultiGraph](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/MultiGraph.png?raw=true)
+
 Check out the [Jupyter notebook][notebook] for the full code.
 
 [notebook]: https://github.com/GAnagno/Social-Web/blob/master/Room%20Graph.ipynb
