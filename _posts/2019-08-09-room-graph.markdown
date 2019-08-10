@@ -20,10 +20,10 @@ ax.axis('off')
 ax.set_title('BIMobject HQ', fontsize=16);
 {% endhighlight %}
 
-![BIMobject HQ](https://github.com/GAnagno/Social-Web/blob/master/data/layout.jpg?raw=true)
+![BIMobject HQ](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/HQ.jpg?raw=true)
 
 # Networked Rooms
-The idea, which is frankly not new but also not common practice in the industry, is to represent rooms and doors as nodes and edges of a `network`. Room properties such as area and perimeter become `node attributes` and door properties such as width and height become `edge weights`.
+The idea, which is frankly not new but also not common practice in the industry, is to represent rooms and doors as nodes and edges of a `network`. Room properties such as area and perimeter become `node_attributes` and door properties such as width and height become `edge_weights`.
 
 
 
