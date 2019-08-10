@@ -108,6 +108,48 @@ nx.draw(G, pos=my_pos, with_labels=True, edge_color=c, width=1.5, node_size=4, e
 
 ![MultiGraph](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/MultiGraph.png?raw=true)
 
+# Embed Attributes
+
+At the moment our MulitiGraph is not attributed. It needs to be converted into a simple weighted Graph with embedded node attributes.
+
+{% highlight python %}
+weight = 0
+nx.set_edge_attributes(G, weight, 'weight')
+{% endhighlight %}
+
+{% highlight python %}
+for i, pair in enumerate(pairs):
+    G.edges[(pair[0], pair[1], pair[2])]['weight'] = bond[i]
+{% endhighlight %}
+
+{% highlight python %}
+# Weighted Graph N from MultiGraph G
+N = nx.Graph()
+for u,v,data in G.edges(data=True):
+    w = data['weight'] if 'weight' in data else 1.0
+    if N.has_edge(u,v):
+        N[u][v]['weight'] += w
+    else:
+        N.add_edge(u, v, weight=w
+{% endhighlight %}
+
+{% highlight python %}
+for i, node in enumerate(rooms['Name']):
+    N.nodes[node]['area'] = ra[i]
+{% endhighlight %}
+
+#### Graph as a Matrix
+
+{% highlight python %}
+# Graph to matrix 
+A = nx.to_numpy_matrix(N)
+plt.figure(figsize=(15,8))
+plt.title('Adjacency matrix')
+sns.heatmap(A, cmap=plt.cm.Paired, annot=True, xticklabels=N.nodes, yticklabels=N.nodes);
+{% endhighlight %}
+
+![Matrix](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/Matrix.png?raw=true)
+
 Check out the [Jupyter notebook][notebook] for the full code.
 
 [notebook]: https://github.com/GAnagno/Social-Web/blob/master/Room%20Graph.ipynb
