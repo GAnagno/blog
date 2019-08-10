@@ -3,23 +3,31 @@ layout: post
 title:  "Room Graph"
 date:   2019-08-09 22:00:00 +0200
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+During the past few years, I have been responsible for the `room-list` and the `door-list` in the planning of a large biotechnology facility. It suddenly occurred to me that these two things are actually one and can be jointly represented with a `graph`.
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+For obvious confidentiality reasons and also for the sake of clarity, I will not publish that. Although free access to structured architectural data, aka BIM, is very restricted, there are some exceptions. BIMobject®, a digital platform for the construction industry based in Malmö, Denmark, is one of them. They actually published the model of their own headquarters designed by SHL Architects as a demonstration of best practice.
 
-# SHL Architects Studio Malmö
+# Studio Malmö by SHL
 ![SHL Architects](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/Architects.jpg?raw=true)
 
-Jekyll also offers powerful support for code snippets:
-
 {% highlight python %}
-plt.figure(figsize = (10,7))
-nx.draw(G, pos=pos, edge_color=bond, node_color=ec, with_labels=False, node_size=ec*1000,
-        width=bond*20, edge_cmap=plt.cm.Spectral, cmap=plt.cm.Blues_r)
+# https://www.bimobject.com/de-ch/bimobjectmodels/product/bimobject_hq
+img = mpimg.imread('data/layout.jpg')
+fig = plt.figure(figsize = (30,10))
+ax = fig.add_subplot(1, 1, 1)
+ax.imshow(img, interpolation='bilinear')
+ax.axis('off')
+ax.set_title('BIMobject HQ', fontsize=16);
 {% endhighlight %}
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+![BIMobject HQ](https://github.com/GAnagno/Social-Web/blob/master/data/layout.jpg?raw=true)
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+# Networked Rooms
+The idea, which is frankly not new but also not common practice in the industry, is to represent rooms and doors as nodes and edges of a `network`. Room properties such as area and perimeter become `node attributes` and door properties such as width and height become `edge weights`.
+
+
+
+
+Check out the [Jupyter notebook][notebook] for the full code.
+
+[notebook]: https://github.com/GAnagno/Social-Web/blob/master/Room%20Graph.ipynb
