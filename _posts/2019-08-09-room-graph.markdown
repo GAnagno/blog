@@ -3,7 +3,7 @@ layout: post
 title:  "Room Graph"
 date:   2019-08-09 22:00:00 +0200
 ---
-During the past few years, I have been responsible for the `room-list` and the `door-list` in the planning of a large biotechnology facility. It suddenly occurred to me that these two things are actually one and can be jointly represented with a `graph`.
+During the past few years, I have been responsible for the `room-list` and the `door-list` in the planning of a large biotechnology facility. It suddenly occurred to me that these two things are actually one and can be jointly represented by a `graph`.
 
 For obvious confidentiality reasons and also for the sake of clarity, I will not publish that. Although free access to structured architectural data, aka BIM, is very restricted, there are some exceptions. BIMobject®, a digital platform for the construction industry based in Malmö, Denmark, is one of them. They actually published the model of their own headquarters designed by SHL Architects as a demonstration of best practice.
 
@@ -130,7 +130,7 @@ for u,v,data in G.edges(data=True):
     if N.has_edge(u,v):
         N[u][v]['weight'] += w
     else:
-        N.add_edge(u, v, weight=w
+        N.add_edge(u, v, weight=w)
 {% endhighlight %}
 
 {% highlight python %}
@@ -138,7 +138,7 @@ for i, node in enumerate(rooms['Name']):
     N.nodes[node]['area'] = ra[i]
 {% endhighlight %}
 
-#### Graph as a Matrix
+#### The Graph rendered as a Matrix
 
 {% highlight python %}
 # Graph to matrix 
@@ -149,6 +149,33 @@ sns.heatmap(A, cmap=plt.cm.Paired, annot=True, xticklabels=N.nodes, yticklabels=
 {% endhighlight %}
 
 ![Matrix](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/Matrix.png?raw=true)
+
+# Gephi Export
+
+Why is a graph useful in the first place? Because it is operational, not just a visualization. It can provide us with network-specific metrics that add to the dimensionality of the initial dataset. For a first evaluation, `Gephi`, an open-source graph-editing software, is a good option.
+
+{% highlight python %}
+with open('data/room_graph.graphml', 'wb') as ofile:
+    nx.write_graphml(N, ofile)
+{% endhighlight %}
+
+#### Get data laboratory results
+
+{% highlight python %}
+# Load data from Gephi
+data = pd.read_csv('data/data_lab.csv')
+data = data.rename(columns={'d0': 'area'})
+columns = ['Id', 'timeset', 'componentnumber']
+data.drop(columns, inplace=True, axis=1)
+{% endhighlight %}
+
+| Label              | Degree | eigencentrality |
+| ------------------ | ------ | --------------- |
+| CTO Office         | 1      | 0.209728        |
+| Open               | 22     | 1.000000        |
+| Legal Eagle Office | 1      | 0.209728        |
+| PA Office          | 1      | 0.209728        |
+| CEO Office         | 1      | 0.209728        |
 
 Check out the [Jupyter notebook][notebook] for the full code.
 
