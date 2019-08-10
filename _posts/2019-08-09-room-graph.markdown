@@ -13,7 +13,7 @@ For obvious confidentiality reasons and also for the sake of clarity, I will not
 {% highlight python %}
 # https://www.bimobject.com/de-ch/bimobjectmodels/product/bimobject_hq
 img = mpimg.imread('data/layout.jpg')
-fig = plt.figure(figsize = (30,10))
+fig = plt.figure(figsize=(30,10))
 ax = fig.add_subplot(1, 1, 1)
 ax.imshow(img, interpolation='bilinear')
 ax.axis('off')
@@ -58,6 +58,53 @@ doors.drop(doors.tail(1).index, inplace=True)
 | PA Office          | Open    | 1015  |
 | CEO Office         | Open    | 1015  |
 | CFO Office         | Open    | 1015  |
+
+#### Preprocessing rooms
+
+{% highlight python %}
+ra = np.array(rooms['Area']).astype(float)
+rp = np.array(rooms['Perimeter']).astype(int)
+{% endhighlight %}
+
+#### Preprocessing doors
+
+{% highlight python %}
+dw = np.array(doors['Width']).astype(int)
+dh = np.array(doors['Height']).astype(int)
+{% endhighlight %}
+
+{% highlight python %}
+# Calculate normalized area of door openings
+bond = dw*dh
+bond = bond/bond.max()
+{% endhighlight %}
+
+# Graph construction
+
+Now it is time to build the network. The graph is small and should be easy to construct but there is a problem. 'Open' and 'Sales Arena' are connected with 2 doors. A double edge or `Multi-edge` is allowed but hinders calculations and for all intends and purposes can be replaced by a weight.
+
+{% highlight python %}
+fr = np.array(doors['From Room'])
+to = np.array(doors['To Room'])
+pairs = np.vstack((fr, to)).T
+{% endhighlight %}
+
+{% highlight python %}
+
+import warnings
+warnings.filterwarnings('ignore')
+ 
+# Create a networkx MultiGraph object
+G = nx.MultiGraph() 
+ 
+# Add edges to to the graph object
+# Each tuple represents an edge between two nodes
+G.add_edges_from(pairs[:, [0, 1]])
+c = np.array(G.edges).T[2].astype(int)
+my_pos = nx.spring_layout(G, seed=56)
+# Draw the resulting graph
+nx.draw(G, pos=my_pos, with_labels=True, edge_color=c, width=1.5, node_size=4, edge_cmap=plt.cm.Paired)
+{% endhighlight %}
 
 Check out the [Jupyter notebook][notebook] for the full code.
 
