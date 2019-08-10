@@ -177,6 +177,68 @@ data.drop(columns, inplace=True, axis=1)
 | PA Office          | 0.209728        |
 | CEO Office         | 0.209728        |
 
+This method effectively expands the dataset from two to fourteen dimensions.
+
+{% highlight python %}
+labels = np.array(data['Label'])
+X = np.array(data.drop(['Label'], axis=1))
+X.shape
+{% endhighlight %}
+
+(25, 14)
+
+# Clustering
+
+Our data are sparse to begin with and clustering in high dimensions is destined to fail. In order to escape the `curse-of-dimensionality`, an intermediate mapping is needed.
+
+#### Step 1: `Non-linear` dimensionality reduction.
+
+{% highlight python %}
+# Apply isomap with k = 24 and output dimension = 3
+from sklearn.manifold import Isomap
+model = Isomap(n_components=3, n_neighbors=24)
+proj = model.fit_transform(X)
+{% endhighlight %}
+
+#### Step 2: `Kmeans` clustering in 3 dimensions.
+
+{% highlight python %}
+# Apply deterministic KMeans with n_clusters = 7
+from sklearn.cluster import KMeans
+Kmean = KMeans(n_clusters=7, random_state=13)
+Kmean.fit(proj)
+{% endhighlight %}
+
+{% highlight python %}
+# Plot clustered isomap
+fig = plt.figure(figsize=(14,10))
+ax = fig.add_subplot(1, 1, 1)
+ax.scatter(proj[:, 0], proj[:, 1], cmap=cmap, c=clusters, s=140, lw=0, alpha=1);
+# Remove the top and right axes from the data plot
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+ax.set_title('Kmeans clustering on projected data', fontsize=16);
+for i, m in enumerate(match):
+    ax.text(proj[i, 0]+0.07, proj[i, 1]+0.07, m[-1], fontsize=12)
+{% endhighlight %}
+
+![Kmeans](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/Kmeans.png?raw=true)
+
+The algorithm successfully identifies meaningful room clusters.
+
+{% highlight python %}
+img = mpimg.imread('data/clusters.jpg')
+fig = plt.figure(figsize = (30,10))
+ax = fig.add_subplot(1, 1, 1)
+ax.imshow(img, interpolation='bilinear')
+ax.axis('off')
+ax.set_title('HQ Clusters', fontsize=16);
+{% endhighlight %}
+
+![HQ clusters](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/HQclusters.png?raw=true)
+
+![HQ graph](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/HQgraph.png?raw=true)
+
 Check out the [Jupyter notebook][notebook] for the full code.
 
 [notebook]: https://github.com/GAnagno/Social-Web/blob/master/Room%20Graph.ipynb
