@@ -35,13 +35,13 @@ rooms.drop([0], inplace=True)
 rooms['Area'] = rooms['Area'].map(lambda x: x.rstrip(' m²'))
 {% endhighlight %}
 
-| Number | Name               | Area  | Perimeter |
-| ------ | ------------------ | ----- | --------- |
-| 1      | CTO Office         | 9.52  |	12794     |
-| 2      | Legal Eagle Office | 9.51  |	12786     |
-| 3      | PA Office          | 9.51  |	12786     |
-| 4      | CEO Office         | 21.62 |	12587     |
-| 5      | HR Office          | 9.30  |	12565     |
+| Name               | Area  |
+| ------------------ | ----- |
+| CTO Office         | 9.52  |
+| Legal Eagle Office | 9.51  |
+| PA Office          | 9.51  |
+| CEO Office         | 21.62 |
+| HR Office          | 9.30  |
 
 {% highlight python %}
 # Load doors 
@@ -51,13 +51,13 @@ doors.drop([0], inplace=True)
 doors.drop(doors.tail(1).index, inplace=True)
 {% endhighlight %}
 
-| Mark   | From Room          | To Room | Width | Height |
-| ------ | ------------------ | ------- | ----- | ------ |
-| 632296 | CTO Office         | Open    | 1015  | 2102   |
-| 642739 | Legal Eagle Office | Open    | 1015  | 2102   |
-| 650548 | PA Office          | Open    | 1015  | 2102   |
-| 196335 | CEO Office         | Open    | 1015  | 2102   |
-| 654502 | CFO Office         | Open    | 1015  | 2102   |
+| From Room          | To Room | Width |
+| ------------------ | ------- | ----- |
+| CTO Office         | Open    | 1015  |
+| Legal Eagle Office | Open    | 1015  |
+| PA Office          | Open    | 1015  |
+| CEO Office         | Open    | 1015  |
+| CFO Office         | Open    | 1015  |
 
 Check out the [Jupyter notebook][notebook] for the full code.
 
