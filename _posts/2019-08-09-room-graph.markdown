@@ -169,13 +169,13 @@ columns = ['Id', 'timeset', 'componentnumber']
 data.drop(columns, inplace=True, axis=1)
 {% endhighlight %}
 
-| Label              | Degree | eigencentrality |
-| ------------------ | ------ | --------------- |
-| CTO Office         | 1      | 0.209728        |
-| Open               | 22     | 1.000000        |
-| Legal Eagle Office | 1      | 0.209728        |
-| PA Office          | 1      | 0.209728        |
-| CEO Office         | 1      | 0.209728        |
+| Label              | eigencentrality |
+| ------------------ | --------------- |
+| CTO Office         | 0.209728        |
+| Open               | 1.000000        |
+| Legal Eagle Office | 0.209728        |
+| PA Office          | 0.209728        |
+| CEO Office         | 0.209728        |
 
 Check out the [Jupyter notebook][notebook] for the full code.
 
