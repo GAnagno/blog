@@ -20,12 +20,26 @@ ax.axis('off')
 ax.set_title('BIMobject HQ', fontsize=16);
 {% endhighlight %}
 
-![BIMobject HQ](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/HQ.jpg?raw=true)
+![BIMobject HQ](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/HQ.png?raw=true)
 
 # Networked Rooms
 The idea, which is frankly not new but also not common practice in the industry, is to represent rooms and doors as nodes and edges of a `network`. Room properties such as area and perimeter become `node_attributes` and door properties such as width and height become `edge_weights`.
 
+# Get structured data
+{% highlight python %}
+# Load rooms 
+rooms = pd.read_csv('data/room_schedule.csv', skiprows=[2], keep_default_na=False)
+rooms.columns = rooms.iloc[0]
+rooms.drop([0], inplace=True)
+rooms['Area'] = rooms['Area'].map(lambda x: x.rstrip(' m²'))
+rooms
+{% endhighlight %}
 
+
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
 
 
 Check out the [Jupyter notebook][notebook] for the full code.
