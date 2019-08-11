@@ -3,9 +3,9 @@ layout: post
 title:  "SBB"
 date:   2019-08-11 09:00:00 +0200
 ---
-During the past few years, I have been responsible for the `room-list` and the `door-list` in the planning of a large biotechnology facility. It suddenly occurred to me that these two things are actually one and can be jointly represented by a `graph`.
+In the [previous post][previous], the graph consisted of 25 nodes. Who needs computers, right? `SBB`, the Swiss Federal Railways, definitely do. In fact, they maintain an amazing data repository comprised of over sixty `Datasets` with many thousand entries each. The company even launched a `Kaggle` competition in 2018 because there was no standard software to cover their increasing needs.  
 
-For obvious confidentiality reasons and also for the sake of clarity, I will not publish that. Although free access to structured architectural data, aka BIM, is very restricted, there are some exceptions. BIMobject®, a digital platform for the construction industry based in Malmö, Denmark, is one of them. They actually published the model of their own headquarters designed by SHL Architects as a demonstration of best practice.
+Here I would like to show the bigger picture without going into task-specific problem solving. It is about connecting the dots, making a living organism out of the network, beyond coordinate systems.  
 
 # Basel SBB
 ![Basel SBB](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/Uhr.jpg?raw=true)
@@ -20,64 +20,57 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 {% endhighlight %}
 
-![BIMobject HQ](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/HQ.png?raw=true)
-
-# Networked Rooms
-The idea, which is frankly not new but also not common practice in the industry, is to represent rooms and doors as nodes and edges of a `network`. Room properties such as area and perimeter become `node_attributes` and door properties such as width and height become `edge_weights`.
-
-# Get structured data
+# Import Data
+The original dataset contains information about the yearly total number of trains that pass through each route section of Switzerland. The list contains entries for 2016, 2017 and 2018. Distinction is also made between passenger transport and cargo. For this post, I will focus only on passenger transport in 2018. Comparative studies along the aforementioned two axes are reserved for the near future.
 
 {% highlight python %}
-# Load rooms 
-rooms = pd.read_csv('data/room_schedule.csv', skiprows=[2], keep_default_na=False)
-rooms.columns = rooms.iloc[0]
-rooms.drop([0], inplace=True)
-rooms['Area'] = rooms['Area'].map(lambda x: x.rstrip(' m²'))
+df = pd.read_csv('data/zugzahlen.csv')
 {% endhighlight %}
 
-| Name               | Area  |
-| ------------------ | ----- |
-| CTO Office         | 9.52  |
-| Legal Eagle Office | 9.51  |
-| PA Office          | 9.51  |
-| CEO Office         | 21.62 |
-| HR Office          | 9.30  |
+| PID          | Anzahl_Zuege |
+| ------------ | ------------ |
+| SBB_GESE_CHY | 126307       |
+| SBB_GIBU_ROL | 97943        |
+| SBB_MIES_TAN | 126101       |
+| SBB_MOR_STJ  | 121566       |
+| SBB_PER_ALL  | 98005        |
+
+# Preprocessing
+As is often the case with transportation networks, there are origin and destination points. Caution :skull:! These two sets of points do not have to be congruent and in this case they aren't. Let's extract the respective longitudes and latitudes in order to have a first picture of the distribution.
+
+#### Longitude of origin
 
 {% highlight python %}
-# Load doors 
-doors = pd.read_csv('data/door_schedule.csv', skiprows=[2], keep_default_na=False)
-doors.columns = doors.iloc[0]
-doors.drop([0], inplace=True)
-doors.drop(doors.tail(1).index, inplace=True)
+df['lon_von'] = df.geopos_von.str.split('\,').str[0]
+df['lon_von'] = df['lon_von'].map(float)
 {% endhighlight %}
 
-| From Room          | To Room | Width |
-| ------------------ | ------- | ----- |
-| CTO Office         | Open    | 1015  |
-| Legal Eagle Office | Open    | 1015  |
-| PA Office          | Open    | 1015  |
-| CEO Office         | Open    | 1015  |
-| CFO Office         | Open    | 1015  |
-
-#### Preprocessing rooms
+#### Latitude of origin
 
 {% highlight python %}
-ra = np.array(rooms['Area']).astype(float)
-rp = np.array(rooms['Perimeter']).astype(int)
+df['lat_von'] = df.geopos_von.str.split('\,').str[1]
+df['lat_von'] = df['lat_von'].map(float)
 {% endhighlight %}
 
-#### Preprocessing doors
-
-{% highlight python %}
-dw = np.array(doors['Width']).astype(int)
-dh = np.array(doors['Height']).astype(int)
-{% endhighlight %}
+#### Longitude of destination
 
 {% highlight python %}
-# Calculate normalized area of door openings
-bond = dw*dh
-bond = bond/bond.max()
+df['lon_bis'] = df.geopos_bis.str.split('\,').str[0]
+df['lon_bis'] = df['lon_bis'].map(float)
 {% endhighlight %}
+
+#### Latitude of destination
+
+{% highlight python %}
+df['lat_bis'] = df.geopos_bis.str.split('\,').str[1]
+df['lat_bis'] = df['lat_bis'].map(float)
+{% endhighlight %}
+
+#### Map of origins and destinations
+
+Spot the difference :trollface:
+
+![Map](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/VonBis.jpg?raw=true)
 
 # Graph construction
 
@@ -241,4 +234,5 @@ ax.set_title('HQ Clusters', fontsize=16);
 
 Check out the [Jupyter notebook][notebook] for the full code.
 
-[notebook]: https://github.com/GAnagno/Social-Web/blob/master/Room%20Graph.ipynb
+[notebook]: https://github.com/GAnagno/Social-Web/blob/master/SBB.ipynb
+[previous]: https://ganagno.github.io/myblog/2019/08/09/room-graph.html
