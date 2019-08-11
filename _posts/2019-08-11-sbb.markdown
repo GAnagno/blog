@@ -143,6 +143,11 @@ nx.draw(G, pos=pos, edge_color=bond, node_color=ec, with_labels=False, node_size
 ![SBB Map](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/SBBmap.png?raw=true)
 
 # Graph as a Network
+New positions based solely on network dynamics abstracting away geography.
+
+{% highlight python %}
+_pos = nx.spring_layout(G, seed=0)
+{% endhighlight %}
 
 {% highlight python %}
 plt.figure(figsize = (12,12), dpi=300)
