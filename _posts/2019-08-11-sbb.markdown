@@ -70,7 +70,7 @@ df['lat_bis'] = df['lat_bis'].map(float)
 
 Spot the difference :trollface:
 
-![Map](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/VonBis.jpg?raw=true)
+![Map](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/VonBis.png?raw=true)
 
 # Graph construction
 
