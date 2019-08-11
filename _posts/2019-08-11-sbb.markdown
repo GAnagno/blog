@@ -72,167 +72,90 @@ Spot the difference :trollface:
 
 ![Map](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/VonBis.png?raw=true)
 
-# Graph construction
-
-Now it is time to build the network. The graph is small and should be easy to construct but there is a problem. 'Open' and 'Sales Arena' are connected with 2 doors. A double edge or `Multi-edge` is allowed but hinders calculations and for all intends and purposes can be replaced by a weight.
+#### Coordinates of origins
 
 {% highlight python %}
-fr = np.array(doors['From Room'])
-to = np.array(doors['To Room'])
-pairs = np.vstack((fr, to)).T
+pos_von = {}
+for i in range(0, len(df)):
+    pos_von[df.BP_Von_Abschnitt[i]] = (df.lon_von[i], df.lat_von[i])
+{% endhighlight %}
+
+#### Coordinates of destinations
+
+{% highlight python %}
+pos_bis = {}
+for i in range(0, len(df)):
+    pos_bis[df.BP_Bis_Abschnitt[i]] = (df.lon_bis[i], df.lat_bis[i])
+{% endhighlight %}
+
+#### Final list of nodes
+
+{% highlight python %}
+# Magic merge of dictionaries
+pos = {**pos_bis, **pos_von}
+{% endhighlight %}
+
+#### Store number of trains as weight
+
+{% highlight python %}
+df['weight'] = df['Anzahl_Zuege'].map(float)
+df['weight'] /= np.max(df['weight'])
+{% endhighlight %}
+
+# Building the graph
+
+The graph is directed, so I will initialize it as a `DiGraph` with weighted edges and proceed with a bidirectional copy of it.
+
+{% highlight python %}
+D = nx.from_pandas_edgelist(df, source = 'BP_Von_Abschnitt', target = 'BP_Bis_Abschnitt',
+                            edge_attr = 'weight', create_using = nx.DiGraph())
 {% endhighlight %}
 
 {% highlight python %}
-
-import warnings
-warnings.filterwarnings('ignore')
- 
-# Create a networkx MultiGraph object
-G = nx.MultiGraph() 
- 
-# Add edges to to the graph object
-# Each tuple represents an edge between two nodes
-G.add_edges_from(pairs[:, [0, 1]])
-c = np.array(G.edges).T[2].astype(int)
-my_pos = nx.spring_layout(G, seed=56)
-# Draw the resulting graph
-nx.draw(G, pos=my_pos, with_labels=True, edge_color=c, width=1.5, node_size=4, edge_cmap=plt.cm.Paired)
+G = nx.Graph(D)
 {% endhighlight %}
 
-![MultiGraph](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/MultiGraph.png?raw=true)
+# Graph as a Map
 
-# Embed Attributes
-
-At the moment our MulitiGraph is not attributed. It needs to be converted into a simple weighted Graph with embedded node attributes.
+Now the graph is fully operational and we can very easily make all kinds of fun calculations with it.
 
 {% highlight python %}
-weight = 0
-nx.set_edge_attributes(G, weight, 'weight')
+bond = np.array(list(nx.get_edge_attributes(G,'weight').values()))
 {% endhighlight %}
 
 {% highlight python %}
-for i, pair in enumerate(pairs):
-    G.edges[(pair[0], pair[1], pair[2])]['weight'] = bond[i]
+# Calculate degree centrality,
+eigenvector_centrality = nx.eigenvector_centrality(G)
+
+# Set degree centrality metrics on each node,
+nx.set_node_attributes(G, eigenvector_centrality, 'ec')
+
+# Use eigenvector centrality for visualization.
+ec = np.array(list(nx.get_node_attributes(G,'ec').values()))
 {% endhighlight %}
 
 {% highlight python %}
-# Weighted Graph N from MultiGraph G
-N = nx.Graph()
-for u,v,data in G.edges(data=True):
-    w = data['weight'] if 'weight' in data else 1.0
-    if N.has_edge(u,v):
-        N[u][v]['weight'] += w
-    else:
-        N.add_edge(u, v, weight=w)
+plt.figure(figsize = (10,7))
+nx.draw(G, pos=pos, edge_color=bond, node_color=ec, with_labels=False, node_size=ec*1000,
+        width=bond*20, edge_cmap=plt.cm.Spectral, cmap=plt.cm.Blues_r)
 {% endhighlight %}
+
+![SBB Map](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/SBBmap.png?raw=true)
+
+# Graph as a Network
 
 {% highlight python %}
-for i, node in enumerate(rooms['Name']):
-    N.nodes[node]['area'] = ra[i]
+plt.figure(figsize = (12,12), dpi=300)
+nx.draw(G, pos=_pos, edge_color=bond, node_color=ec, with_labels=True, font_size=5, weight='weight', node_size=ec*2500,
+        width=bond*20, edge_cmap=plt.cm.Spectral, cmap=plt.cm.Blues_r, alpha=0.8)
+#plt.savefig('SBB/atom.jpg')
 {% endhighlight %}
 
-#### The Graph rendered as a Matrix
-
-{% highlight python %}
-# Graph to matrix 
-A = nx.to_numpy_matrix(N)
-plt.figure(figsize=(15,8))
-plt.title('Adjacency matrix')
-sns.heatmap(A, cmap=plt.cm.Paired, annot=True, xticklabels=N.nodes, yticklabels=N.nodes);
-{% endhighlight %}
-
-![Matrix](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/Matrix.png?raw=true)
-
-# Gephi Export
-
-Why is a graph useful in the first place? Because it is operational, not just a visualization. It can provide us with network-specific metrics that add to the dimensionality of the initial dataset. For a first evaluation, `Gephi`, an open-source graph-editing software, is a good option.
-
-{% highlight python %}
-with open('data/room_graph.graphml', 'wb') as ofile:
-    nx.write_graphml(N, ofile)
-{% endhighlight %}
-
-#### Get data laboratory results
-
-{% highlight python %}
-# Load data from Gephi
-data = pd.read_csv('data/data_lab.csv')
-data = data.rename(columns={'d0': 'area'})
-columns = ['Id', 'timeset', 'componentnumber']
-data.drop(columns, inplace=True, axis=1)
-{% endhighlight %}
-
-| Label              | eigencentrality |
-| ------------------ | --------------- |
-| CTO Office         | 0.209728        |
-| Open               | 1.000000        |
-| Legal Eagle Office | 0.209728        |
-| PA Office          | 0.209728        |
-| CEO Office         | 0.209728        |
-
-This method effectively expands the dataset from two to fourteen dimensions.
-
-{% highlight python %}
-labels = np.array(data['Label'])
-X = np.array(data.drop(['Label'], axis=1))
-X.shape
-{% endhighlight %}
-
-(25, 14)
-
-# Clustering
-
-Our data are sparse to begin with and clustering in high dimensions is destined to fail. In order to escape the `curse-of-dimensionality`, an intermediate mapping is needed.
-
-#### Step 1: `Non-linear` dimensionality reduction.
-
-{% highlight python %}
-# Apply isomap with k = 24 and output dimension = 3
-from sklearn.manifold import Isomap
-model = Isomap(n_components=3, n_neighbors=24)
-proj = model.fit_transform(X)
-{% endhighlight %}
-
-#### Step 2: `Kmeans` clustering in 3 dimensions.
-
-{% highlight python %}
-# Apply deterministic KMeans with n_clusters = 7
-from sklearn.cluster import KMeans
-Kmean = KMeans(n_clusters=7, random_state=13)
-Kmean.fit(proj)
-{% endhighlight %}
-
-{% highlight python %}
-# Plot clustered isomap
-fig = plt.figure(figsize=(14,10))
-ax = fig.add_subplot(1, 1, 1)
-ax.scatter(proj[:, 0], proj[:, 1], cmap=cmap, c=clusters, s=140, lw=0, alpha=1);
-# Remove the top and right axes from the data plot
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-ax.set_title('Kmeans clustering on projected data', fontsize=16);
-for i, m in enumerate(match):
-    ax.text(proj[i, 0]+0.07, proj[i, 1]+0.07, m[-1], fontsize=12)
-{% endhighlight %}
-
-![Kmeans](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/Kmeans.png?raw=true)
-
-The algorithm successfully identifies meaningful room clusters.
-
-{% highlight python %}
-img = mpimg.imread('data/clusters.jpg')
-fig = plt.figure(figsize = (30,10))
-ax = fig.add_subplot(1, 1, 1)
-ax.imshow(img, interpolation='bilinear')
-ax.axis('off')
-ax.set_title('HQ Clusters', fontsize=16);
-{% endhighlight %}
-
-![HQ clusters](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/HQclusters.png?raw=true)
-
-![HQ graph](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/HQgraph.png?raw=true)
+![SBB Net](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/SBBnet.png?raw=true)
 
 Check out the [Jupyter notebook][notebook] for the full code.
+
+P.S. The thick purple line in the core is the `Langstrasse` with 336586 passenger trains in 2018.
 
 [notebook]: https://github.com/GAnagno/Social-Web/blob/master/SBB.ipynb
 [previous]: https://ganagno.github.io/myblog/2019/08/09/room-graph.html
