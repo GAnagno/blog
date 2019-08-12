@@ -3,11 +3,11 @@ layout: post
 title:  "SBB"
 date:   2019-08-11 09:00:00 +0200
 ---
-In the [previous post][previous], the graph consisted of 25 nodes. Who needs computers, right? `SBB`, the Swiss Federal Railways, definitely do. In fact, they maintain an amazing data repository comprised of over sixty `Datasets` with many thousand entries each. The company even launched a `Kaggle` competition in 2018 because there was no standard software to cover their increasing needs.  
+In the [previous post][previous] the network consisted of only 25 nodes. Who needs computers, right? `SBB`, the Swiss Federal Railways, definitely do. In fact, they maintain an amazing data repository comprised of over sixty `datasets` with many thousand entries each. The company even launched a `Kaggle` competition in 2018 because there was no standard software to cover their increasing needs.  
 
 Here I would like to show the bigger picture without going into task-specific problem solving. It is about connecting the dots, making a living organism out of the network, beyond coordinate systems.  
 
-# Basel SBB
+#### Basel SBB
 ![Basel SBB](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/Uhr.jpg?raw=true)
 
 {% highlight python %}
@@ -36,7 +36,7 @@ df = pd.read_csv('data/zugzahlen.csv')
 | SBB_PER_ALL  | 98005        |
 
 # Preprocessing
-As is often the case with transportation networks, there are origin and destination points. Caution :skull:! These two sets of points do not have to be congruent and in this case they aren't. Let's extract the respective longitudes and latitudes in order to have a first picture of the distribution.
+As is often the case with transportation networks, there are origin and destination points. Caution :skull:! These two sets of points do not have to be congruent and in this case they aren't. Let's extract the respective longitudes and latitudes and have a look.
 
 #### Longitude of origin
 
@@ -95,20 +95,20 @@ for i in range(0, len(df)):
 pos = {**pos_bis, **pos_von}
 {% endhighlight %}
 
-#### Store number of trains as weight
+# Building the graph
+
+The graph is directed, so I will initialize it as a `DiGraph` with weighted edges and proceed with a bidirectional copy.
 
 {% highlight python %}
 df['weight'] = df['Anzahl_Zuege'].map(float)
 df['weight'] /= np.max(df['weight'])
 {% endhighlight %}
 
-# Building the graph
-
-The graph is directed, so I will initialize it as a `DiGraph` with weighted edges and proceed with a bidirectional copy of it.
-
 {% highlight python %}
-D = nx.from_pandas_edgelist(df, source = 'BP_Von_Abschnitt', target = 'BP_Bis_Abschnitt',
-                            edge_attr = 'weight', create_using = nx.DiGraph())
+D = nx.from_pandas_edgelist(df, source = 'BP_Von_Abschnitt',
+                            target = 'BP_Bis_Abschnitt',
+                            edge_attr = 'weight',
+                            create_using = nx.DiGraph())
 {% endhighlight %}
 
 {% highlight python %}
@@ -117,7 +117,7 @@ G = nx.Graph(D)
 
 # Graph as a Map
 
-Now the graph is fully operational and we can very easily make all kinds of fun calculations with it.
+Now the graph is fully operational and we can very easily do all kinds of fun calculations.
 
 {% highlight python %}
 bond = np.array(list(nx.get_edge_attributes(G,'weight').values()))
@@ -135,9 +135,11 @@ ec = np.array(list(nx.get_node_attributes(G,'ec').values()))
 {% endhighlight %}
 
 {% highlight python %}
-plt.figure(figsize = (10,7))
-nx.draw(G, pos=pos, edge_color=bond, node_color=ec, with_labels=False, node_size=ec*1000,
-        width=bond*20, edge_cmap=plt.cm.Spectral, cmap=plt.cm.Blues_r)
+plt.figure(figsize = (12,9), dpi=150)
+nx.draw(G, pos=pos, edge_color=bond, node_color=ec, with_labels=False,
+        node_size=ec*1000, width=bond*20,
+        edge_cmap=plt.cm.Spectral, cmap=plt.cm.Blues_r)
+plt.savefig('SBB/map.jpg')
 {% endhighlight %}
 
 ![SBB Map](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/SBBmap.png?raw=true)
@@ -150,17 +152,18 @@ _pos = nx.spring_layout(G, seed=0)
 {% endhighlight %}
 
 {% highlight python %}
-plt.figure(figsize = (12,12), dpi=300)
-nx.draw(G, pos=_pos, edge_color=bond, node_color=ec, with_labels=True, font_size=5, weight='weight', node_size=ec*2500,
-        width=bond*20, edge_cmap=plt.cm.Spectral, cmap=plt.cm.Blues_r, alpha=0.8)
-#plt.savefig('SBB/atom.jpg')
+plt.figure(figsize = (12,12), dpi=150)
+nx.draw(G, pos=_pos, edge_color=bond, node_color=ec, with_labels=True,
+        font_size=5, weight='weight', node_size=ec*2500, width=bond*20,
+        edge_cmap=plt.cm.Spectral, cmap=plt.cm.Blues_r, alpha=0.8)
+plt.savefig('SBB/atom.jpg')
 {% endhighlight %}
 
 ![SBB Net](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/SBBnet.png?raw=true)
 
-Check out the [Jupyter notebook][notebook] for the full code.
+Check out the [Jupyter notebook][notebook]!
 
-P.S. The thick purple line in the core is the `Langstrasse` with 336586 passenger trains in 2018.
+P.S. The thick purple line in the core is `Langstrasse` with 336586 trains in 2018.
 
 [notebook]: https://github.com/GAnagno/Social-Web/blob/master/SBB.ipynb
 [previous]: https://ganagno.github.io/myblog/2019/08/09/room-graph.html
