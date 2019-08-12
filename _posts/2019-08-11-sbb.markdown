@@ -163,7 +163,7 @@ plt.savefig('SBB/atom.jpg')
 
 Check out the [Jupyter notebook][notebook]!
 
-P.S. The thick purple line in the core is `Langstrasse` with 336586 trains in 2018.
+P.S. The thick purple line in the core is `Langstrasse` with 336586 passenger trains in 2018.
 
 [notebook]: https://github.com/GAnagno/Social-Web/blob/master/SBB.ipynb
 [previous]: https://ganagno.github.io/myblog/2019/08/09/room-graph.html
