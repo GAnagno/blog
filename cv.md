@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: CV
+permalink: /cv/
 ---
 
 Euclid is one way to see the world. F-B, U-D, L-R, in a binary and neutralized fashion. What about Power, Love, Hate, Revolution, Language, History? Are my friends on my left or on my right? Orientation works differently in a network: it is political. Networks, represented as graphs, have manifold geometries with spectral, quantum metrics. In society, transportation, telecommunication, logistics, epidemic outbreaks, proteins, ..., it is all about signals. Exchanging information.
