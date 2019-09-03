@@ -3,29 +3,27 @@ layout: page
 title: CV
 ---
 
-Johnny Coder
+Georg Anagnostopoulos
 ============
 
--------------------     ----------------------------
-1 MyAddress                        email@example.com
-MyTown 1000                          @twitter_handle
-MyCountry                           1800 my-phone-nr
--------------------     ----------------------------
+----------------
+Minervastrasse 9                 
+Zurich 8032                          
+Switzerland           
+
 
 Education
 ---------
 
-2010-2014 (expected)
-:   **PhD, Computer Science**; Awesome University (MyTown)
+2013-2016
+:   **Master of Advanced Studies ETH, Architecture and Information**; ETH/D-ARCH/ITA/CAAD (Zurich)
 
-    *Thesis title: Deep Learning Approaches to the Self-Awesomeness
-     Estimation Problem*
+    *Thesis title: Theatrum Orbi, a study on Realtime Graphics*
 
-2007-2010
-:   **BSc, Computer Science and Electrical Engineering**; University of
-    HomeTown (HomeTown)
+2006-2013
+:   **Diploma, Architectural Engineering**; National Technical University of Athens (Athens)
 
-    *Minor: Awesomeology*
+    *Thesis title: Networked parametric urban infrastructure*
 
 Experience
 ----------
