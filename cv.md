@@ -9,96 +9,61 @@ Georg Anagnostopoulos
 ----------------
 Minervastrasse 9                 
 Zurich 8032                          
-Switzerland           
-
+Switzerland
 
 Education
 ---------
 
 2013-2016
-:   **Master of Advanced Studies ETH, Architecture and Information**; ETH/D-ARCH/ITA/CAAD (Zurich)
+:   **Master of Advanced Studies ETH, Architecture and Information**; ETH (Zurich)
 
     *Thesis title: Theatrum Orbi, a study on Realtime Graphics*
 
 2006-2013
 :   **Diploma, Architectural Engineering**; National Technical University of Athens (Athens)
 
-    *Thesis title: Networked parametric urban infrastructure*
+    *Thesis title: Networked, parametric urban infrastructure*
 
 Experience
 ----------
 
-**Your Most Recent Work Experience:**
+**Architect at PHARMAPLAN AG**
 
-Short text containing the type of work done, results obtained,
-lessons learned and other remarks. Can also include lists and
-links:
+General Planer. Tasks/Responsibilities: responsible for the area of "interior fittings", for coordinating and updating the roombook, the door list, the equipment list and for Comos data entries of big projects:
 
-* First item
+* EPCM Laboratory, Confidential Customer, 5/2019-ongoing
 
-* Item with [link](http://www.example.com). Links will work both in
-  the html and pdf versions.
+* Biotech Mammalian Facility, Lonza, 7/2017-est. 5/2020
 
-**That Other Job You Had**
+**Architect at BLATTER MÜLLER**
 
-Also with a short description.
+New multipurpose hall for the municipality of Bubendorf. Responsible for the procurement and execution planning of sports hall, foyer and secondary spaces. Development of the corresponding virtual reality environments with Unity 3D.
+
+**Internship at SAM Architekten AG**
+
+Participation in the execution planning of FIFA Museum in Zurich. Building of prototypes in scale 1:1, various visualizations and models. Responsible for the digital fabrication unit.
 
 Technical Experience
 --------------------
 
-My Cool Side Project
-:   For items which don't have a clear time ordering, a definition
-    list can be used to have named items.
+Confoederatio Helvetica
+:   Dynamic [map][ref1] of public transportation in Switzerland using open Datasets
+    and Mapbox GL.
 
-    * These items can also contain lists, but you need to mind the
-      indentation levels in the markdown source.
-    * Second item.
+    * Network modelling and spectral analysis based on publicly available train frequency data of the Swiss Federal Railways. Exporting of the original and derived networked features as GEOJSON.
+    * OSM data analysis on millions of buildings according to number of transportation POIs in a vicinity defined by euclidean assumptions. This part is direct implementation of work by Dr. Vahid Moosavi.
 
-Open Source
-:   List open source contributions here, perhaps placing emphasis on
-    the project names, for example the **Linux Kernel**, where you
-    implemented multithreading over a long weekend, or **node.js**
-    (with [link](http://nodejs.org)) which was actually totally
-    your idea...
+:   Basic knowledge of **Python**, **Ruby**, **HTML**, **CSS**, **C#**, **Javascript**
 
-Programming Languages
-:   **first-lang:** Here, we have an itemization, where we only want
-    to add descriptions to the first few items, but still want to
-    mention some others together at the end. A format that works well
-    here is a description list where the first few items have their
-    first word emphasized, and the last item contains the final few
-    emphasized terms. Notice the reasonably nice page break in the pdf
-    version, which wouldn't happen if we generated the pdf via html.
+[ref1]: https://ganagno.github.io/maps/che.html
 
-:   **second-lang:** Description of your experience with second-lang,
-    perhaps again including a [link] [ref], this time placing the url
-    reference elsewhere in the document to reduce clutter (see source
-    file). 
-
-:   **obscure-but-impressive-lang:** We both know this one's pushing
-    it.
-
-:   Basic knowledge of **C**, **x86 assembly**, **forth**, **Common Lisp**
-
-[ref]: https://github.com/githubuser/superlongprojectname
-
-Extra Section, Call it Whatever You Want
+Extracurricular
 ----------------------------------------
 
 * Human Languages:
+     * Greek (native speaker)
+     * German
+     * English
 
-     * English (native speaker)
-     * ???
-     * This is what a nested list looks like.
-
-* Random tidbit
-
-* Other sort of impressive-sounding thing you did
-
-
-You can find relevant source code in GitHub:
-[GAnagno][GAnagno-organization] /
-[Social-Web](https://github.com/GAnagno/Social-Web)
-
-
-[GAnagno-organization]: https://github.com/GAnagno
+* Tango dancing
+* Hatha Yoga
