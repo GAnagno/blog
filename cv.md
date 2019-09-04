@@ -43,6 +43,8 @@ New multipurpose hall for the municipality of Bubendorf. Responsible for the pro
 
 Participation in the execution planning of FIFA Museum in Zurich. Building of prototypes in scale 1:1, various visualizations and models. Responsible for the digital fabrication unit.
 
+<br>
+
 Technical Experience
 --------------------
 
