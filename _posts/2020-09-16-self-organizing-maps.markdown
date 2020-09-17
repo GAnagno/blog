@@ -29,7 +29,7 @@ SOM is organized in a 2-D grid (more dimensions are theoretically possible) of f
 size = int(1e5)
 training = X[np.random.choice(X.shape[0], size, replace=False)]
 {% endhighlight %}
-
+<div style="page-break-after: always;"></div>
 # How big?
 An important decision is the size of the model, or number of neurons <img src="https://render.githubusercontent.com/render/math?math=M">. Our goal is to achieve maximum utilization of the provided gird. Manual tuning of the hyperparameters can be time-consuming and lead to poor results or slow training. For this kind of simple model there exist some not widely known [heuristics] that satisfactorily answer the question. The answer is <img src="https://render.githubusercontent.com/render/math?math=M \approx 5 sqrt(N)">, where <img src="https://render.githubusercontent.com/render/math?math=N"> is the total size of the projected data. The final grid should then be <img src="https://render.githubusercontent.com/render/math?math=sqrt(M) \times sqrt(M)">.
 

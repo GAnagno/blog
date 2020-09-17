@@ -8,13 +8,13 @@ Zürich CH-8032
 
 Education
 ---------
-2013-2016
+*2013-2016*  
 **MAS ETH, Architecture and Information, ETH Zürich**  
-*Thesis title: Theatrum Orbi, a study on Realtime Graphics*  
+Thesis title: Theatrum Orbi, a study on Realtime Graphics  
 
-2006-2013
+*2006-2013*  
 **Diploma, Architectural Engineering, NTU Athens**  
-*Thesis title: Networked, parametric urban infrastructure*
+Thesis title: Networked, parametric urban infrastructure
 
 Publications
 ---------
@@ -22,23 +22,23 @@ Georg Anagnostopoulos, Vahid Moosavi. StationRank: Aggregate dynamics of the Swi
 
 Experience
 ----------
-Currently
+*Currently*  
 **Data Scientist at EUCLIDorNOT**  
 Data analytic services related to data collection, cleaning and analysis, programming algorithms and providing technical expertise directed towards the understanding and utilisation of data connected to the real estate industry, RE5Q London.  
 
-2017-2020
+*2017-2020*  
 **Architect at PHARMAPLAN AG**  
 Data coordination (BIM) of one biotech production facility and one lab facility, Lonza Visp.  
 
-2016-2017
+*2016-2017*  
 **Architect at BLATTER MÜLLER**  
-Virtual reality environments with Unity 3D for the new municipal multipurpose hall, Bubendorf BL.  
+Virtual reality environments with Unity 3D for a multipurpose hall, Bubendorf.  
 
-2014-2015
+*2014-2015*  
 **Intern at SAM Architekten AG**  
-Responsible for the digital fabrication unit. Participation in the planning of the FIFA Museum, Zürich.  
+Responsible for the digital fabrication unit. Participation in the planning of the FIFA Museum.  
 
-2013-2014
+*2013-2014*  
 **Student Assistant at ETH Zürich**  
 Responsible for digital prototyping at the Professorship of Digital Architectonics, ETH Zürich.
 
