@@ -48,7 +48,7 @@ Fluent in German and English. Native Greek.
 
 Technical Background
 --------------------
-[https://stationrank.herokuapp.com/][ref2] as complementary material of StationRank (in progress).
+[https://stationrank.herokuapp.com/][ref2] as supplementary material of StationRank (in progress).
 
 [Map of public transportation][ref3] in Switzerland using OSM data and Mapbox GL.  
 Implementation of a workflow developed by Dr. Vahid Moosavi.
