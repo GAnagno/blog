@@ -6,25 +6,45 @@ date:   2020-09-17 15:00:00 +0200
 Currently, I am working on the revision of [StationRank], a paper we wrote with [Vahid Moosavi]. In the words of one of the academic referees: *"The paper presents a Markov Chain (MC) framework to analyse daily aggregated itineraries of the swiss railway systems. They use their MC framework to asses the congestion, resilience and fragility of the railway network"*. In the preprint we also discuss the relevance of a somewhat obscure notion: the Kemeny's constant.
 
 # Preliminaries and assumptions
-For this brief analysis, I assume an ergodic MC of discrete time, with a row-stochastic transition probability matrix <img src="https://render.githubusercontent.com/render/math?math=\mathbb{P}">. By solving <img src="https://render.githubusercontent.com/render/math?math=\pi^T\mathbb{P}=\pi^T">, we obtain the stationary distribution vector <img src="https://render.githubusercontent.com/render/math?math=\pi^T"> and its respective eigenvalues <img src="https://render.githubusercontent.com/render/math?math=\lambda_1 = 1,\lambda_2,\dots,\lambda_n">.
-Then it is straightforward to calculate the Kemeny constant <img src="https://render.githubusercontent.com/render/math?math=K=\displaystyle\sum_{j=2}^{n} \frac{1}{1-\lambda_j}">. This formulation is simple, but difficult to interprete as it just emphasizes the correlation to the eigenvalues. Another formulation in terms of mean first passage time <img src="https://render.githubusercontent.com/render/math?math=m_i{}_j"> comes to the rescue<sup>[1](#Kirkland)</sup>.
-
-#### Density distribution histograms of <img src="https://render.githubusercontent.com/render/math?math=m_j{}_i"> for every swiss station
-![hist](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/remotehist.png?raw=true)
-
-<div style="page-break-after: always;"></div>
-
-# Mean First Passage Time
-Mean first passage time is the average expected number of steps from the origin state <img src="https://render.githubusercontent.com/render/math?math=S_i">
-to a destination state <img src="https://render.githubusercontent.com/render/math?math=S_j">,
-randomly selected according to the stationary distribution. It has been shown that the Kemeny constant is independant from the choice of the initial state.   
-
 {% highlight python %}
 import math
 import time
 import numpy as np
 from scipy import linalg as la
 {% endhighlight %}
+For this brief analysis, I assume an ergodic MC of discrete time in first order, with a row-stochastic transition probability matrix <img src="https://render.githubusercontent.com/render/math?math=\mathbb{P}">. By solving <img src="https://render.githubusercontent.com/render/math?math=\pi^T\mathbb{P}=\pi^T">, we obtain the stationary distribution vector <img src="https://render.githubusercontent.com/render/math?math=\pi^T"> and its respective eigenvalues <img src="https://render.githubusercontent.com/render/math?math=\lambda_1 = 1,\lambda_2,\dots,\lambda_n">.
+Having the eigenvalues, we directly obtain the Kemeny constant <img src="https://render.githubusercontent.com/render/math?math=K=\displaystyle\sum_{j=2}^{n} \frac{1}{1-\lambda_j}"><sup>[1](#Kirkland)</sup>. This is very straightforward to calculate, but difficult to interpret. I would like to focus on another formulation in terms of mean first passage time <img src="https://render.githubusercontent.com/render/math?math=m_i{}_j"> which grants us more insight to the inner workings of <img src="https://render.githubusercontent.com/render/math?math=K">.
+
+# Mean First Passage Time
+Mean first passage time is the expected number of steps from an origin state <img src="https://render.githubusercontent.com/render/math?math=S_i"> 
+to a destination state <img src="https://render.githubusercontent.com/render/math?math=S_j">. The  equation
+<img src="https://render.githubusercontent.com/render/math?math=K=\displaystyle\sum_{j=1}^{n} m_i{}_j \pi_j"> is yet another, more intuitive way to calculate the Kemeny constant as the average mean first passage time from any origin state to any other destination state chosen according to the probability <img src="https://render.githubusercontent.com/render/math?math=\pi_j"> and shows that <img src="https://render.githubusercontent.com/render/math?math=K"> is independent from the choice of the initial state
+<img src="https://render.githubusercontent.com/render/math?math=S_i">.    
+
+{% highlight python %}
+# Calculate the Drazin inverse
+I = np.identity(P.shape[0])
+Q = drazin_inverse((I - P), tol=1e-4)
+{% endhighlight %}
+
+Obviously now, in addition to <img src="https://render.githubusercontent.com/render/math?math=\pi^T">, we also need to calculate mean first passage time, which in turn requires the calculation of the group (special case of Drazin) inverse of <img src="https://render.githubusercontent.com/render/math?math=\Q=(\I-\mathbb{P})">.
+
+<div style="page-break-after: always;"></div>
+
+{% highlight python %}
+# Calculate Mean First Passage Time
+n = len(indices[k])
+MFPT = np.zeros(shape=(n, n))
+for i, row in (enumerate(Q)):
+    for j, _ in enumerate(row):
+        if j != i:
+	    m = (Q[j][j] - Q[i][j]) / pi[j]
+	else:
+	    m = 1 / pi[j]
+	MFPT[i][j] = m
+{% endhighlight %}
+
+Interpretability often comes at a cost.
 
 {% highlight python %}
 def drazin_inverse(A, tol=1e-4, verbose='on'):
@@ -52,23 +72,12 @@ def drazin_inverse(A, tol=1e-4, verbose='on'):
     return U @ Z @ U_inv
 {% endhighlight %}
 
-{% highlight python %}
-# Calculate the Drazin inverse
-I = np.identity(P.shape[0])
-Q = drazin_inverse((I - P), tol=1e-4)
-{% endhighlight %}
-{% highlight python %}
-# Calculate Mean First Passage Time
-n = len(indices[k])
-MFPT = np.zeros(shape=(n, n))
-for i, row in (enumerate(Q)):
-    for j, _ in enumerate(row):
-        if j != i:
-	    m = (Q[j][j] - Q[i][j]) / APs[k][0][j]
-	    MFPT[i][j] = m
-{% endhighlight %}
+# So what?
+If instead of <img src="https://render.githubusercontent.com/render/math?math=\m_i{}_j">, which by definition is expected to have very similar distribution for different initial stations, we have a look at the mean 
+<img src="https://render.githubusercontent.com/render/math?math=\m_j{}_i">, then we come up with a kind of accessibility analysis in terms of "remoteness" of train stations. This can be easily verified on a map. 
 
-#### Accesibility analysis (in terms of remoteness) of the swiss network
+![hist](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/remotehist.png?raw=true)
+#### Geographic distribution of mean <img src="https://render.githubusercontent.com/render/math?math=m_j{}_i">, a measure of "remoteness"
 ![remote](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/remoteH.png?raw=true)
 
 <a name="Kirkland">1</a>: E. Crisostomi, S. Kirkland & R. Shorten (2011) A Google-like model of road network dynamics and its application to regulation and control, International Journal of Control, 84:3, 633-651, DOI: [10.1080/00207179.2011.568005]

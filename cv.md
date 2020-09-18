@@ -42,6 +42,14 @@ Responsible for the digital fabrication unit. Participation in the planning of t
 **Student Assistant at ETH Zürich**  
 Responsible for digital prototyping at the Professorship of Digital Architectonics, ETH Zürich.
 
+References
+--------------------
+- Prof. Sacha Menz  
+menz@arch.ethz.ch
+
+- Dr. Vahi Moosavi  
+svm@arch.ethz.ch
+
 Languages
 --------------------
 Fluent in German and English. Native Greek.
