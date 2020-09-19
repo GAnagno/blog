@@ -76,18 +76,19 @@ for i, row in (enumerate(G)):
 {% endhighlight %}
 
 <div style="page-break-after: always;"></div>
-
 # Takeaway
-If instead of <img src="https://render.githubusercontent.com/render/math?math=\m_i{}_j">, which by definition is expected to have very similar distribution for different initial stations, we have a look at the mean 
-<img src="https://render.githubusercontent.com/render/math?math=\m_j{}_i">, then we come up with a kind of accessibility analysis in terms of "remoteness" of train stations. This can be easily verified on a map. 
-
+If instead of <img src="https://render.githubusercontent.com/render/math?math=\m_i{}_j">, which by definition is expected to have very similar distribution for different initial stations, we have a look at the mean <img src="https://render.githubusercontent.com/render/math?math=\m_j{}_i">, then we come up with a kind of accessibility analysis in terms of "remoteness" of train stations. This can be easily verified on a map.
 ![hist](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/remoteness_h.png?raw=true)
 ![remote](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/remoteness.png?raw=true)
 *Geographic distribution of mean <img src="https://render.githubusercontent.com/render/math?math=m_j{}_i">, a measure of "remoteness"*
 
 <a name="Kirkland">1</a>: E. Crisostomi, S. Kirkland & R. Shorten (2011) A Google-like model of road network dynamics and its application to regulation and control, International Journal of Control, 84:3, 633-651, DOI: [10.1080/00207179.2011.568005]
+
 <div style="page-break-after: always;"></div>
+
 [10.1080/00207179.2011.568005]: https://www.tandfonline.com/doi/abs/10.1080/00207179.2011.568005
 [StationRank]: https://arxiv.org/abs/2006.02781
 [Vahid Moosavi]: https://www.vahidmoosavi.me/
 [OS]: https://www.ordnancesurvey.co.uk/
+
+
