@@ -5,14 +5,13 @@ date:   2020-09-16 16:00:00 +0200
 ---
 Here I would like to share my experience in a real production pipeline with a very interesting data reduction algorithm: [Self Organizing Maps (SOM)][SOM] introduced by Professor Teuvo Kohonen. It is a simple but powerful example of unsupervised machine learning. There are several implementations available, but the most prominent is [SOMPY].   
 
-#### 14 million UK building geometries indexed with SOM
 ![som](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/som2.png?raw=true)
+*14 million UK building geometries indexed with SOM*
 
 <div style="page-break-after: always;"></div>
 
 # Motivation
 A major design requirement was to provide a common geographic reference for record linkage of different data sets related to building portfolios. You might want to think this as a data-driven postcode. Real postcodes greatly vary in terms of population density and aren't well suited for scalable data matching pipelines. Why not just use a nearest neighbor approach? The advantage of a many-to-many indexed comparison, performed on the level of artificial postcodes, is that it provides qualitative confidence measures, as in [Python Record Linkage Toolkit]. In contrast, a simple haversine distance is difficult to interpret because an absolute tolerance of 10 meters might be "good enough" in rural areas, but "poor" in densely populated urban areas like Soho.
-
 
 {% highlight python %}
 import sompylib.sompy as SOM
@@ -78,8 +77,8 @@ print("Done!")
 
 <div style="page-break-after: always;"></div>
 
-#### Hitmap of neural activations of the best matching units (BMU)
 ![hitmap](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/hitmap.png?raw=true)
+*Hitmap of neural activations of the best matching units (BMU)*
 
 Caution! SOM is extremely sensitive to duplicates, a problem commonly referred to as imbalanced data. Especially when the dimensionality is low, this can be very detrimental to the model, so make sure to drop any duplicates before training.
 

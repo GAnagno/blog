@@ -31,21 +31,12 @@ Obviously now, in addition to <img src="https://render.githubusercontent.com/ren
 
 <div style="page-break-after: always;"></div>
 
-{% highlight python %}
-# Calculate Mean First Passage Time
-n = len(indices[k])
-MFPT = np.zeros(shape=(n, n))
-for i, row in (enumerate(Q)):
-    for j, _ in enumerate(row):
-        if j != i:
-	    m = (Q[j][j] - Q[i][j]) / pi[j]
-	else:
-	    m = 1 / pi[j]
-	MFPT[i][j] = m
-{% endhighlight %}
+A matrix <img src="https://render.githubusercontent.com/render/math?math=\G">is the group inverse of <img src="https://render.githubusercontent.com/render/math?math=\Q,">if and only if:
+- <img src="https://render.githubusercontent.com/render/math?math=\Q \times \G \times \Q= \Q">
+- <img src="https://render.githubusercontent.com/render/math?math=\G \times \Q \times \G= \G">
+- <img src="https://render.githubusercontent.com/render/math?math=\Q \times \G = \G \times \Q">
 
-Interpretability often comes at a cost.
-
+Interpretability often comes at a cost. 
 {% highlight python %}
 def drazin_inverse(A, tol=1e-4, verbose='on'):
     """Compute the Drazin inverse of A.
@@ -63,7 +54,6 @@ def drazin_inverse(A, tol=1e-4, verbose='on'):
     Q1, S, k1 = la.schur(A, sort=f)
     Q2, T, k2 = la.schur(A, sort=g)
     U = np.hstack((S[:, :k1], T[:, :n - k1]))
-    #Calculate U^-1 only once
     U_inv = la.inv(U)
     V = U_inv @ A @ U
     Z = np.zeros((n, n))
@@ -72,16 +62,31 @@ def drazin_inverse(A, tol=1e-4, verbose='on'):
     return U @ Z @ U_inv
 {% endhighlight %}
 
-# So what?
+The mean first passage time can be calculated as follows:
+<img src="https://render.githubusercontent.com/render/math?math=\m_i{}_j = \frac{g_j{}_j - g_i{}_j}{\pi_j}">.
+
+{% highlight python %}
+# Calculate Mean First Passage Time
+MFPT = np.zeros(shape=(n, n))
+for i, row in (enumerate(G)):
+    for j, _ in enumerate(row):
+        if j != i:
+	    m = (G[j][j] - G[i][j]) / pi[j]
+	    MFPT[i][j] = m
+{% endhighlight %}
+
+<div style="page-break-after: always;"></div>
+
+# Takeaway
 If instead of <img src="https://render.githubusercontent.com/render/math?math=\m_i{}_j">, which by definition is expected to have very similar distribution for different initial stations, we have a look at the mean 
 <img src="https://render.githubusercontent.com/render/math?math=\m_j{}_i">, then we come up with a kind of accessibility analysis in terms of "remoteness" of train stations. This can be easily verified on a map. 
 
-![hist](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/remotehist.png?raw=true)
-#### Geographic distribution of mean <img src="https://render.githubusercontent.com/render/math?math=m_j{}_i">, a measure of "remoteness"
-![remote](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/remoteH.png?raw=true)
+![hist](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/remoteness_h.png?raw=true)
+![remote](https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/remoteness.png?raw=true)
+*Geographic distribution of mean <img src="https://render.githubusercontent.com/render/math?math=m_j{}_i">, a measure of "remoteness"*
 
 <a name="Kirkland">1</a>: E. Crisostomi, S. Kirkland & R. Shorten (2011) A Google-like model of road network dynamics and its application to regulation and control, International Journal of Control, 84:3, 633-651, DOI: [10.1080/00207179.2011.568005]
-
+<div style="page-break-after: always;"></div>
 [10.1080/00207179.2011.568005]: https://www.tandfonline.com/doi/abs/10.1080/00207179.2011.568005
 [StationRank]: https://arxiv.org/abs/2006.02781
 [Vahid Moosavi]: https://www.vahidmoosavi.me/
