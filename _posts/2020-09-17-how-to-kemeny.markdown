@@ -32,9 +32,9 @@ Obviously now, in addition to <img src="https://render.githubusercontent.com/ren
 <div style="page-break-after: always;"></div>
 
 A matrix <img src="https://render.githubusercontent.com/render/math?math=\G">is the group inverse of <img src="https://render.githubusercontent.com/render/math?math=\Q,">if and only if:
-- <img src="https://render.githubusercontent.com/render/math?math=\Q \times \G \times \Q= \Q">
-- <img src="https://render.githubusercontent.com/render/math?math=\G \times \Q \times \G= \G">
-- <img src="https://render.githubusercontent.com/render/math?math=\Q \times \G = \G \times \Q">
+- <img src="https://render.githubusercontent.com/render/math?math=(\Q)(\G)(\Q)=(\Q)">
+- <img src="https://render.githubusercontent.com/render/math?math=(\G)(\Q)(\G)=(\G)">
+- <img src="https://render.githubusercontent.com/render/math?math=(\Q)(\G)=(\G)(\Q)">
 
 Interpretability often comes at a cost. 
 {% highlight python %}
