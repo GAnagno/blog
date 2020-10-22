@@ -6,7 +6,7 @@ Georg Anagnostopoulos<br>
 Minervastrasse 9<br>
 Zürich CH-8032
 
-<img src="https://pbs.twimg.com/profile_images/1255587792144531457/h9ubdDTT_400x400.jpg" height="auto" width="200" style="border-radius:50%">
+<img src="https://pbs.twimg.com/profile_images/1255587792144531457/h9ubdDTT_400x400.jpg" height="auto" width="150" style="border-radius:50%">
 
 Publications
 ---------
@@ -31,12 +31,12 @@ Experience
 Data analytic services related to data collection, cleaning and analysis, programming algorithms and providing technical expertise directed towards the understanding and utilisation of data connected to the real estate industry, RE5Q London.  
 
 *2017-2020*  
-**Data coordinator at PHARMAPLAN AG**  
+**Data coordinator at Pharmaplan AG**  
 Data coordination of one biotech production facility and one lab facility, Lonza Visp.  
 
 *2016-2017*  
-**Designer at BLATTER MÜLLER**  
-Virtual reality environments with Unity 3D for a multipurpose hall, Bubendorf.  
+**Designer at Blatter Müller**  
+Virtual reality environments with Unity 3D for a multipurpose hall, Gemeinde Bubendorf.  
 
 *2014-2015*  
 **Intern at SAM Architekten AG**  
