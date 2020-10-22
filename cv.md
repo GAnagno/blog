@@ -6,32 +6,34 @@ Georg Anagnostopoulos<br>
 Minervastrasse 9<br>
 Zürich CH-8032
 
-Education
----------
-*2013-2016*  
-**MAS ETH, Architecture and Information, ETH Zürich**  
-Thesis title: Theatrum Orbi, a study on Realtime Graphics  
-
-*2006-2013*  
-**Diploma, Architectural Engineering, NTU Athens**  
-Thesis title: Networked, parametric urban infrastructure
+<img src="https://pbs.twimg.com/profile_images/1255587792144531457/h9ubdDTT_400x400.jpg" height="auto" width="200" style="border-radius:50%">
 
 Publications
 ---------
 Georg Anagnostopoulos, Vahid Moosavi. StationRank: Aggregate dynamics of the Swiss railway. [https://arxiv.org/abs/2006.02781][ref1], under review by PLOS ONE.
 
+Education
+---------
+*2013-2016*  
+**MAS ETH, Architecture and Information, ETH Zürich**  
+Thesis title: Theatrum Orbi, a study on Realtime Graphics.  
+
+*2006-2013*  
+**Diploma, Architectural Engineering, NTU Athens**  
+Thesis title: Networked, parametric urban infrastructure.
+
 Experience
 ----------
 *Currently*  
-**Data Scientist at EUCLIDorNOT**  
+**Data scientist at EUCLIDorNOT**  
 Data analytic services related to data collection, cleaning and analysis, programming algorithms and providing technical expertise directed towards the understanding and utilisation of data connected to the real estate industry, RE5Q London.  
 
 *2017-2020*  
-**Architect at PHARMAPLAN AG**  
-Data coordination (BIM) of one biotech production facility and one lab facility, Lonza Visp.  
+**Data coordinator at PHARMAPLAN AG**  
+Data coordination of one biotech production facility and one lab facility, Lonza Visp.  
 
 *2016-2017*  
-**Architect at BLATTER MÜLLER**  
+**Designer at BLATTER MÜLLER**  
 Virtual reality environments with Unity 3D for a multipurpose hall, Bubendorf.  
 
 *2014-2015*  
@@ -47,7 +49,7 @@ References
 - Prof. Sacha Menz  
 menz@arch.ethz.ch
 
-- Dr. Vahi Moosavi  
+- Dr. Vahid Moosavi  
 svm@arch.ethz.ch
 
 Languages
@@ -56,7 +58,7 @@ Fluent in German and English. Native Greek.
 
 Technical Background
 --------------------
-[https://stationrank.herokuapp.com/][ref2] as supplementary material of StationRank (in progress).
+[https://stationrank.herokuapp.com/][ref2] as supplementary material of StationRank.
 
 [Map of public transportation][ref3] in Switzerland using OSM data and Mapbox GL.  
 Implementation of a workflow developed by Dr. Vahid Moosavi.
