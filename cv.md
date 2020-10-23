@@ -11,7 +11,6 @@ Zürich CH-8032
 Publications
 ---------
 
-
 Anagnostopoulos, Georg and Vahid Moosavi. "StationRank: Aggregate dynamics of the Swiss railway." [ArXiv abs/2006.02781][ref1] (2020): under review by PLOS ONE.
 
 Education
@@ -67,7 +66,7 @@ Implementation of a workflow developed by Dr. Vahid Moosavi.
 
 [MZH_Bubendorf][ref4], video game of a Swiss sportshall.
 
-Fluent in **Python**. Knowledge of **PostgreSQL**, **Ruby**, **Javascript**, **HTML**, **CSS**, **C#**, 
+Fluent in **Python**. Knowledge of **PostgreSQL**, **Ruby**, **Javascript**, **HTML**, **CSS**, **C#**.
 
 [ref1]: https://arxiv.org/abs/2006.02781
 [ref2]: https://stationrank.herokuapp.com/
