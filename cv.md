@@ -6,7 +6,7 @@ Georg Anagnostopoulos<br>
 Minervastrasse 9<br>
 Zürich CH-8032
 
-<img src="https://pbs.twimg.com/profile_images/1255587792144531457/h9ubdDTT_400x400.jpg" height="auto" width="150" style="border-radius:50%">
+<img src="https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/Bild.jpg?raw=true" height="auto" width="150" style="border-radius:50%">
 
 Publications
 ---------
