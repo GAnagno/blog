@@ -11,7 +11,7 @@ Zürich CH-8032
 Publications
 ---------
 
-Anagnostopoulos, Georg and Vahid Moosavi. "StationRank: Aggregate dynamics of the Swiss railway." [ArXiv abs/2006.02781][ref1] (2020): under review by PLOS ONE.
+Anagnostopoulos, Georg, and Vahid Moosavi. “StationRank: Aggregate Dynamics of the Swiss Railway.” [ArXiv:2006.02781][ref1] [Physics], Oct. 2020. arXiv.org, doi:10.1371/journal.pone.0244206. (in press)
 
 Education
 ---------
