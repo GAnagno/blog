@@ -11,7 +11,9 @@ Zürich CH-8032
 Publications
 ---------
 
-Anagnostopoulos, Georg, and Vahid Moosavi. “StationRank: Aggregate Dynamics of the Swiss Railway.” [ArXiv:2006.02781][ref1] [Physics], Oct. 2020. arXiv.org, doi:10.1371/journal.pone.0244206. (in press)
+Anagnostopoulos G, Moosavi V (2020) StationRank: Aggregate dynamics of  
+the Swiss railway. PLoS ONE 15(12): e0244206.  
+[https://doi.org/10.1371/journal.pone.0244206][ref1]
 
 Education
 ---------
@@ -68,7 +70,7 @@ Implementation of a workflow developed by Dr. Vahid Moosavi.
 
 Fluent in **Python**. Knowledge of **PostgreSQL**, **Ruby**, **Javascript**, **HTML**, **CSS**, **C#**.
 
-[ref1]: https://arxiv.org/abs/2006.02781
+[ref1]: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0244206
 [ref2]: https://stationrank.herokuapp.com/
 [ref3]: https://ganagno.github.io/maps/che.html
 [ref4]: http://anagno.com/MZH_Bubendorf/
