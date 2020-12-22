@@ -19,7 +19,7 @@ Education
 ---------
 *2013-2016*  
 **MAS ETH, Architecture and Information, ETH Zürich**  
-Thesis title: Theatrum Orbi, a study on Realtime Graphics.  
+Thesis title: Theatrum Orbi, a study on realtime graphics.  
 
 *2006-2013*  
 **Diploma, Architectural Engineering, NTU Athens**  
@@ -33,19 +33,19 @@ Data analytic services related to data collection, cleaning and analysis, progra
 
 *2017-2020*  
 **Data coordinator at Pharmaplan AG**  
-Data coordination of one biotech production facility and one lab facility, Lonza Visp.  
+Data coordination and building information modeling of two new facilities, Lonza Visp.  
 
 *2016-2017*  
-**Designer at Blatter Müller**  
-Virtual reality environments with Unity 3D for a multipurpose hall, Gemeinde Bubendorf.  
+**Architect at Blatter Müller**  
+Planning and simulation of a new sportshall, Gemeinde Bubendorf.  
 
 *2014-2015*  
 **Intern at SAM Architekten AG**  
-Responsible for the digital fabrication unit. Participation in the planning of the FIFA Museum.  
+Responsible for the digital fabrication unit. Planning of the FIFA Museum, Zürich.  
 
 *2013-2014*  
 **Student Assistant at ETH Zürich**  
-Responsible for digital prototyping at the Professorship of Digital Architectonics, ETH Zürich.
+Responsible for digital prototyping at the Chair of Architecture and CAAD, ETH Zürich.
 
 References
 --------------------
@@ -66,7 +66,7 @@ Technical Background
 [Map of public transportation][ref3] in Switzerland using OSM data and Mapbox GL.  
 Implementation of a workflow developed by Dr. Vahid Moosavi.
 
-[MZH_Bubendorf][ref4], video game of a Swiss sportshall.
+[MZH_Bubendorf][ref4], video game of a sportshall made with Unity.
 
 Fluent in **Python**. Knowledge of **PostgreSQL**, **Ruby**, **Javascript**, **HTML**, **CSS**, **C#**.
 
