@@ -36,7 +36,7 @@ Data analytic services related to data collection, cleaning and analysis, progra
 Data coordination and building information modeling of two new facilities, Lonza Visp.  
 
 *2016-2017*  
-**Architect at Blatter Müller**  
+**Designer at Blatter Müller**  
 Planning and simulation of a new sportshall, Gemeinde Bubendorf.  
 
 *2014-2015*  
@@ -49,11 +49,9 @@ Responsible for digital prototyping at the Chair of Architecture and CAAD, ETH Z
 
 References
 --------------------
-- Prof. Sacha Menz  
-menz@arch.ethz.ch
 
 - Dr. Vahid Moosavi  
-svm@arch.ethz.ch
+[Vahid_moosavi@swissre.com](mailto:Vahid_moosavi@swissre.com)
 
 Languages
 --------------------
@@ -63,8 +61,7 @@ Technical Background
 --------------------
 [https://stationrank.herokuapp.com/][ref2] as supplementary material of StationRank.
 
-[Map of public transportation][ref3] in Switzerland using OSM data and Mapbox GL.  
-Implementation of a workflow developed by Dr. Vahid Moosavi.
+[Map of public transportation][ref3] in Switzerland using OSM data and Mapbox GL.
 
 [MZH_Bubendorf][ref4], video game of a sportshall made with Unity.
 
