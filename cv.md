@@ -33,15 +33,15 @@ Experience
 ----------
 *2020-2021*  
 **Data scientist at EUCLIDorNOT**  
-Data analytic services related to data collection, cleaning and analysis, programming algorithms and providing technical expertise directed towards the understanding and utilisation of data connected to the real estate industry, RE5Q London.  
+Data analytic services related to data collection, cleaning and analysis, programming algorithms and providing technical expertise directed towards the understanding and utilisation of data connected to the real estate industry. Client: RE5Q, London.  
 
 *2017-2020*  
 **Data coordinator at Pharmaplan AG**  
-Data coordination and building information modeling of production facilites, Lonza Visp.  
+Building information modelling of biotech facilites, Basel.  
 
 *2016-2017*  
-**Designer at Blatter Müller**  
-Planning and simulation of a sportshall with Unity game engine, Gemeinde Bubendorf.  
+**Unity developer at Blatter+Müller**  
+Simulation of a sportshall with Unity game engine, Zürich.  
 
 *2014-2015*  
 **Intern at SAM Architekten AG**  
@@ -49,7 +49,7 @@ Head of the digital fabrication lab, Zürich.
 
 *2013-2014*  
 **Student assistant at ETH Zürich**  
-3D printing at the Chair of CAAD, ETH Zürich.
+3D printing at the Chair of CAAD, Zürich.
 
 *Summer 2012*  
 **Intern at Object-e architecture**  
