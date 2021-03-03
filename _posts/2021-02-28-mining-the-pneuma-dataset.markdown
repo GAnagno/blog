@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Mining the pNEUMA dataset"
-date:   2021-02-28 01:00:00 +0200
+date:   2021-02-28 20:00:00 +0200
 ---
 Emerging technologies such as Unmanned Areal Vehicles (UAV), commonly referred to as drones, effectively change the way we see the world. Their disruptive potential propagates across multiple areas of human activity and most certainly in science and engineering. Unprecedented amounts of valuable data streams are being collected constantly in high resolution and at relatively low cost. There are different ways to think about the implications of such technologies, but I would like to argue here that they present a certain chance to democratize knowledge. Evidence being collected by these ubiquitous mobile sensors also invites us to rethink scientific practice and challenge established theories.
 
