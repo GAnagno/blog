@@ -52,12 +52,7 @@ Agent-based crowd simulation, Thessaloniki.
 
 References
 --------------------
-- Prof. Dr. Dimitrios Gourdoukis  
-[dgourdoukis@arch.auth.gr](mailto:dgourdoukis@arch.auth.gr)
-- Dr. Vahid Moosavi  
-[vahid_moosavi@swissre.com](mailto:vahid_moosavi@swissre.com)
-- Richard Hodgson, CEO  
-[richard.hodgson@re5q.com](mailto:richard.hodgson@re5q.com)
+References available upon request.
 
 Awards
 ---------
