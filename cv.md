@@ -10,14 +10,14 @@ Zürich CH-8032
 
 Selected blogposts
 ----------
-[Mining the pNEUMA dataset][ref2]: NMF recovery of traffic stream density.  
+[Mining the pNEUMA dataset][ref1]: NMF recovery of traffic stream density.  
 [How to Kemeny][ref2]: measuring network efficiency with mean first passage times.  
 
 Publication record
 ----------
 Anagnostopoulos G, Moosavi V (2020)
 StationRank: Aggregate dynamics of the Swiss railway.  
-PLoS ONE 15(12): e0244206. [https://doi.org/10.1371/journal.pone.0244206][ref1]  
+PLoS ONE 15(12): e0244206. [https://doi.org/10.1371/journal.pone.0244206][ref3]  
 
 Work experience
 ----------
@@ -83,8 +83,7 @@ Other projects
 --------------------
 [Map of public transportation][ref4] in Switzerland using OSM data and Mapbox.
 
-[ref1]: https://doi.org/10.1371/journal.pone.0244206
-[ref2]: https://ganagno.github.io/myblog/2021/02/28/mining-the-pneuma-dataset.html
-[ref3]: https://stationrank.herokuapp.com/
+[ref1]: https://ganagno.github.io/myblog/2021/02/28/mining-the-pneuma-dataset.html
+[ref2]: https://ganagno.github.io/myblog/2020/09/17/how-to-kemeny.html
+[ref3]: https://doi.org/10.1371/journal.pone.0244206
 [ref4]: https://ganagno.github.io/maps/che.html
-[ref5]: http://anagno.com/MZH_Bubendorf/
