@@ -21,6 +21,10 @@ PLoS ONE 15(12): e0244206. [https://doi.org/10.1371/journal.pone.0244206][ref3]
 
 Work experience
 ----------
+*2021-2025*  
+**Doctoral assistant at EPFL Urban Transportation Systems Laboratory (LUTS)**  
+PhD student under the supervision of Prof. Nikolas Geroliminis.  
+
 *2020-2021*  
 **Data scientist at EUCLIDorNOT**  
 Consultancy services related to data collection, cleaning and analysis, programming algorithms and providing technical expertise directed towards the understanding and utilization of data connected to the real estate industry. Client: RE5Q, London.  
