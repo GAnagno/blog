@@ -3,8 +3,8 @@ layout: page
 title: CV
 ---
 Georg Anagnostopoulos<br>
-Minervastrasse 9<br>
-Zürich CH-8032
+Av. de Sévelin 15<br>
+Lausanne CH-1004
 
 <img src="https://github.com/GAnagno/myblog/blob/gh-pages/assets/images/Profilbild.jpg?raw=true" height="auto" width="150" style="border-radius:50%">
 
